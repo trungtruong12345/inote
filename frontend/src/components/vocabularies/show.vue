@@ -10,7 +10,7 @@
                     {{ vocabulary.word }}
                 </div>
                 <div>
-                    {{ vocabulary.vocalize }}
+                    /{{ vocabulary.vocalize }}/
                 </div>
             </div>
     
