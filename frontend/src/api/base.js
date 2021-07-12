@@ -8,4 +8,10 @@ if (token) {
     axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 }
 
+let auth_token = localStorage.getItem('Authorization')
+if(auth_token){
+    axios.defaults.headers.common['Authorization'] = auth_token
+}
+
+
 export default axios

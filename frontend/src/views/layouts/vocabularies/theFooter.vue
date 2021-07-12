@@ -7,8 +7,8 @@
                                                                                                 <button class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary " type="button" id="dropdownMenuTopRight" data-toggle="dropdown" aria-expanded="true">
                                                                                                     <i class="material-icons md-dark pmd-md">account_box</i>
                                                                                                 </button>
-                                                                                                <div aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-left list-group pmd-z-depth pmd-list pmd-card-list">
-                                                                                                    <div class="list-group-item" >logout</div>
+                                                                                                <div id="user" aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-left list-group pmd-z-depth pmd-list pmd-card-list">
+                                                                                                    <div class="list-group-item" @click='logout'>logout</div>
                                                                                                     <div class="list-group-item" >change password</div>
                                                                                                 </div>
                                                                                             </span>
@@ -67,6 +67,7 @@
 
 <script>
 import FormInput from '../../../components/vocabularies/formInput.vue'
+import { logout } from '../../../helpers/lib.js'
 
 export default {
     components: { FormInput },
@@ -82,13 +83,17 @@ export default {
             var translate = element[2].value
             var example = document.querySelector(`#form-dialog .modal-body textarea`).value
             this.$store.dispatch('vocabularies/createVocabulary', { word, vocalize, translate, example })
-        }
+        },
+        logout
     },
 
 }
 </script>
 
 <style lang="scss" scoped>
+#user {
+    font-size: 15px;
+}
 #footer {
     position: fixed;
     width: 100%;

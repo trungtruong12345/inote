@@ -48,6 +48,7 @@ module INote2
       end
     end
 
+    config.autoload_paths << Rails.root.join('lib')
     
   end
 end

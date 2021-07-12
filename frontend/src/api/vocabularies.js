@@ -11,7 +11,6 @@ export function createVocabulary(word, vocalize, translate, example){
             vocalize: vocalize,
             translate: translate,
             example: example,
-            user_id: 1,
         }
     }
     return axios.post('/api/vocabularies.json', data)
@@ -24,7 +23,6 @@ export function updateVocabulary(word, vocalize, translate, example, id) {
             vocalize: vocalize,
             translate: translate,
             example: example,
-            user_id: 1,
         }
     }
     return axios.put(`/api/vocabularies/${id}.json`, data)

@@ -10,7 +10,6 @@ export function createNote(title, content, bgColor){
             title: title,
             content: content,
             bgColor: bgColor,
-            user_id: 1,
         }
     }
     return axios.post('/api/notes.json', data)
@@ -22,7 +21,6 @@ export function updateNote(title, content, bgColor, id) {
             title: title,
             content: content,
             bgColor: bgColor,
-            user_id: 1,
         }
     }
     return axios.put(`/api/notes/${id}.json`, data)
