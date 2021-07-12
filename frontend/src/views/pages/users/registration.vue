@@ -1,7 +1,7 @@
 <template lang="">
     <div class="container">
         <div class='form-login pmd-z-depth-1 shadow-demo'>
-            <form>
+            <form @submit="preventDefault()">
                 <div class='brand'>
                     SIGN UP
                 </div>
@@ -10,7 +10,7 @@
                     <label for="inputError1" class="control-label pmd-input-group-label">Username</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i></div>
-                        <input type="text" class="form-control" spellcheck="false">
+                        <input type="text" class="form-control" spellcheck="false" v-model="nickname">
                     </div>
                 </div>
                 <!-- email -->
@@ -18,7 +18,7 @@
                     <label for="inputError1" class="control-label pmd-input-group-label">Email</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">email</i></div>
-                        <input type="email" class="form-control" spellcheck="false">
+                        <input type="email" class="form-control" spellcheck="false" v-model="email">
                     </div>
                 </div>
                 <!-- Password -->
@@ -26,36 +26,55 @@
                     <label for="inputError1" class="control-label pmd-input-group-label">Password</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock_outline</i></div>
-                        <input type="password" class="form-control" spellcheck="false">
+                        <input type="password" class="form-control" spellcheck="false" v-model="password">
                     </div>
                 </div>
-
+    
                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                     <label for="inputError1" class="control-label pmd-input-group-label">Confirm password</label>
                     <div class="input-group">
                         <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">https</i></div>
-                        <input type="password" class="form-control" spellcheck="false">
+                        <input type="password" class="form-control" spellcheck="false" v-model="password_confirmation">
                     </div>
                 </div>
-
+    
                 <!-- btn login -->
                 <div class='btn-login'>
-                    <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary">SIGN UP</button>
+                    <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary" @click="onSubmit">SIGN UP</button>
                 </div>
     
                 <!-- btn-register -->
                 <div class='btn-register'>
-                    <router-link to="/login">OR SIGN IN</router-link>    
+                    <router-link to="/login">OR SIGN IN</router-link>
                 </div>
-                
+    
             </form>
         </div>
     </div>
 </template>
 
 <script>
-export default {
+import { signUp } from '../../../api/users'
 
+export default {
+    data() {
+        return {
+            nickname: '',
+            password: '',
+            password_confirmation: '',
+            email: ''
+        }
+    },
+    methods: {
+        onSubmit() {
+            signUp({
+                nickname: this.nickname,
+                password: this.password,
+                password_confirmation: this.password_confirmation,
+                email: this.email
+            })
+        }
+    },
 }
 </script>
 
