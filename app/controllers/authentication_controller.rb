@@ -16,7 +16,7 @@ class AuthenticationController < ApplicationController
   def sign_up
     user = User.new(sign_up_params)
     if user.save
-      user.update_email_confirmation_code
+      # user.update_email_confirmation_code
       user.send_email_verify.deliver
       render json: {
         messages: 'Check confirm code from your email',
@@ -40,12 +40,39 @@ class AuthenticationController < ApplicationController
   end
 
   def resend_email_confirmation_code
-    User.find_by(id: params[:user_id]).try(:send_email_verify).try(:deliver)
+    return User.find_by(id: params[:user_id]).send_email_verify.deliver unless params[:user_id].blank?
+    return User.find_by(email: params[:email]).send_email_verify.deliver unless params[:email].blank?
+  rescue StandardError => e
+    render json: { message: 'Account does not exist' }, status: 422
+  end
+
+  def change_password
+    user = User.find_by(email: change_pass_params[:email])
+    if User.verify_email_confirmation_code?(change_pass_params[:email_confirmation_code], user.id)
+      if user.update!(password: change_pass_params[:password],
+                      password_confirmation: change_pass_params[:password_confirmation])
+        render json: {status: 200}, status: :ok
+      else
+        return_error user.errors.full_messages
+      end
+    else
+      return_error ['Email verification code is not correct']
+    end
+  rescue StandardError => e
+    return_error ["Errors"]
   end
 
   private
 
+  def return_error(message = [])
+    render json: { message: message, status: 422 }, status: 200
+  end
+
   def sign_up_params
     params.permit(:username, :email, :password, :password_confirmation)
+  end
+
+  def change_pass_params
+    params.permit(:email, :email_confirmation_code, :password, :password_confirmation)
   end
 end

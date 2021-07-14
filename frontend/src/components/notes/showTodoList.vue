@@ -1,15 +1,10 @@
 <template lang="">
     <div class='ttt'>
-    
-        <div class='btn-edit btn-dele' :data-target="`#form-dialog${note.id}`" data-toggle="modal">
-            <i class="material-icons">edit</i>
-        </div>
-    
         <div class='btn-dele' @click='onDelete'>
             <i class="material-icons">clear</i>
         </div>
     
-        <div class='note pmd-z-depth shadow-demo' :style="`background-color: ${bgColor}`">
+        <div class='note pmd-z-depth shadow-demo' :style="`background-color: ${note.bgColor}`">
     
             <div class='content'>
                 <table>
@@ -27,44 +22,11 @@
             </div>
     
         </div>
-    
-        <!-- Dialog with Form Elements -->
-        <div tabindex="-1" class="modal fade" :id="`form-dialog${note.id}`" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog ">
-                <div class="modal-content" :style="`background-color: ${bgColor}`">
-                    <div>
-                        <div class="pmd-card-title-text">
-                            <button class="btn  pmd-btn-raised pmd-ripple-effect btn-warning" type="button" @click="setBg('#fef175')"></button>
-    
-                            <button class="btn  pmd-btn-raised pmd-ripple-effect btn-danger" type="button" @click="setBg('#f28b82')"></button>
-    
-                            <button class="btn  pmd-btn-raised pmd-ripple-effect btn-primary" type="button" @click="setBg('#e6c9a8')" style='background-color: #d8b995;'></button>
-    
-                            <button class="btn  pmd-btn-raised pmd-ripple-effect btn-default" type="button" @click="setBg('white')"></button>
-                        </div>
-    
-                        <div>
-                            <button aria-hidden="true" data-dismiss="modal" class="" type="button">×</button>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <form-edit-todo-list :note="note" ></form-edit-todo-list>
-                    </div>
-                    <div class="pmd-modal-action">
-                        <button data-dismiss="modal" class="btn pmd-btn-fab pmd-ripple-effect btn-info" type="button" @click='onDelete'><i class="material-icons pmd-sm">clear</i></button>
-                        <button data-dismiss="modal" class="btn pmd-btn-fab pmd-ripple-effect btn-info" type="button"><i class="material-icons pmd-sm">check</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-import FormEditTodoList from './formEditTodoList.vue'
-
 export default {
-    components: { FormEditTodoList },
     props: {
         note: Object,
     },
@@ -73,24 +35,9 @@ export default {
             todo_list: JSON.parse(this.note.content)
         }
     },
-    computed: {
-        bgColor() {
-            if (this.note) {
-                return this.note.bgColor
-            } else {
-                return 'white'
-            }
-        },
-    },
     methods: {
         onchange() {
             this.$store.dispatch('notes/updateNote', { title: null, bgColor: this.bgColor, content: JSON.stringify(this.todo_list), id: this.note.id })
-        },
-        setBg(value) {
-            new Promise(() => {
-                    this.note.bgColor = value
-                })
-                .then(this.onchange())
         },
         onDone(id) {
             new Promise((resolve) => {
@@ -115,8 +62,10 @@ export default {
                 .then(this.onchange())
         },
         onDelete() {
-            this.$store.dispatch('notes/deleteNote', { id: this.note.id })
-            // location.reload()
+            var action = confirm('Are you sure ?')
+            if(action == true) {
+                this.$store.dispatch('notes/deleteNote', { id: this.note.id })
+            }
         },
     },
 };
@@ -157,12 +106,12 @@ table {
     padding: 14px;
     cursor: pointer;
     &:hover {
-        box-shadow: 0px 2px 9px 0px #000000ba;
+        box-shadow: 0px 2px 9px 0px #b6aeaeba;
     }
     .content {
         width: 100%;
         word-break: break-word;
-        margin-top: 21px;
+        margin-top: 8px;
     }
 }
 
@@ -188,7 +137,6 @@ table {
 
 @media all and (max-width: 771px) {
     .modal-dialog {
-        // min-width: 94%;
         width: 600px;
     }
 }
@@ -197,6 +145,14 @@ table {
     .modal-dialog {
         min-width: 94%;
         max-width: -webkit-fill-available;
+    }
+}
+
+@media all and (max-width: 547px) { 
+    .ttt {
+        .btn-dele {
+            display: block;
+        }
     }
 }
 

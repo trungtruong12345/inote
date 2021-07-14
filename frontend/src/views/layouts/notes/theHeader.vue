@@ -26,6 +26,7 @@
 
 <script>
 import FormSearch from '../../../components/notes/formSearch.vue'
+
 export default {
     components: { FormSearch },
     props: ['title'],

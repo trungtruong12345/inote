@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  # validates :email_confirmation_code, uniqueness: true, presence: false
+  validates :email_confirmation_code, uniqueness: true, presence: true, on: :update
 
   EMAIL_ACTIVE = true
   EMAIL_INACTIVE = false
@@ -35,11 +35,12 @@ class User < ApplicationRecord
 
   def update_email_confirmation_code
     self.email_confirmation_code = User.generate_email_confirmation_code
-    self.email_status = false
+    # self.email_status = false
     save(validate: false)
   end
 
   def send_email_verify
+    update_email_confirmation_code
     UserMailer.send_email_verify self
   end
 

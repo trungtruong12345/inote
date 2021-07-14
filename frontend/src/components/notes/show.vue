@@ -58,23 +58,13 @@ export default {
             if (this.note.bgColor) {
                 return this.note.bgColor
             } else {
-               return 'white'
+                return 'white'
             }
         }
-    },
-    // data(){
-    //     return {
-    //         bgColor: 'white'
-    //     }
-    // },
-    mounted() {
-        // console.log(this.note.bgColor);
-        // this.bgColor = this.note.bgColor
     },
     methods: {
         setBg(value) {
             this.note.bgColor = value
-            // this.bgColor = value
         },
         onSubmit() {
             var title = document.querySelector(`#form-dialog${this.note.id} .modal-body input`).value
@@ -82,7 +72,10 @@ export default {
             this.$store.dispatch('notes/updateNote', { title: title, bgColor: this.bgColor, content: content, id: this.note.id })
         },
         onDelete() {
-            this.$store.dispatch('notes/deleteNote', { id: this.note.id })
+            var action = confirm("Are you sure ?")
+            if (action) {
+                this.$store.dispatch('notes/deleteNote', { id: this.note.id })
+            }
         }
     },
 };
@@ -98,7 +91,7 @@ $color: #f1c433;
     padding: 14px;
     cursor: pointer;
     &:hover {
-        box-shadow: 0px 2px 9px 0px #000000ba;
+        box-shadow: 0px 2px 9px 0px #b6aeaeba;
     }
     .content {
         width: 100%;
@@ -143,6 +136,14 @@ $color: #f1c433;
     .modal-dialog {
         min-width: 94%;
         max-width: -webkit-fill-available;
+    }
+}
+
+@media all and (max-width: 547px) {
+    .ttt {
+        .btn-dele {
+            display: block;
+        }
     }
 }
 

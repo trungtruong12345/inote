@@ -6,6 +6,7 @@ import Notes from './views/pages/notes/index.vue'
 import Vocabularies from './views/pages/vocabularies/index.vue'
 import Login from './views/pages/users/login.vue'
 import Register from './views/pages/users/registration.vue'
+import Change_password from './views/pages/users/change_password.vue'
 
 // middleware
 import VueRouteMiddleware from 'vue-route-middleware'
@@ -18,6 +19,7 @@ const routers = new Router({
     routes: [
         { path: '/sign_in', component: Login },
         { path: '/sign_up', component: Register },
+        { path: '/change_password', component: Change_password },
         {
             path: '/notes', 
             component: Notes, 

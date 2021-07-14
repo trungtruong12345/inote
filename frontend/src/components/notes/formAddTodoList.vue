@@ -2,9 +2,9 @@
     <div id='form-todo'>
         <div id='add'>
             <input type='text' v-model="val" autocomplete="off" spellcheck="false" />
-            <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary" @click='()=>{onAdd({val: this.val })}'>
-                        <i class="material-icons md-dark pmd-md">add</i>
-            </button>
+            <button type="button" class="btn pmd-btn-raised pmd-ripple-effect" @click='()=>{onAdd({val: this.val })}'>
+                                            <i class="material-icons md-dark pmd-md">add</i>
+                                </button>
         </div>
         <!--List containing links -->
         <div class="list-group pmd-z-depth pmd-list pmd-card-list">
@@ -50,14 +50,17 @@ export default {
 div#add {
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: #3498db;
+    align-items: center; // background-color: #3498db;
     height: 68px;
     input {
         height: 40px;
         min-width: 61%;
         border: 0;
+        background-color: RGB(255 255 255/38%);
         outline: unset;
+        border-radius: 20px;
+        padding-left: 14px;
+        box-shadow: 0px 0px 3px 0px #00000052;
     }
     @media all and (max-width: 500px) {
         input {
@@ -71,6 +74,9 @@ div#add {
         align-items: center;
         width: 40px;
         box-shadow: unset;
+        border-radius: 50%;
+        margin-left: 12px;
+        background-color: #34ace0;
         i {
             color: white;
         }
@@ -95,7 +101,22 @@ div#add {
     i {
         font-size: 18px;
         font-weight: 600;
-        color: #b1a5a5;
+        color: #777;
     }
+}
+
+.list-group {
+    background-color: unset !important;
+    div,
+    a {
+        background-color: unset !important;
+    }
+}
+
+.pmd-z-depth {
+    box-shadow: unset !important;
+}
+a.list-group-item, button.list-group-item {
+    color: #333;
 }
 </style>

@@ -4,14 +4,14 @@
             <div id='user-option'>
                 <!--Dropdown Menu Top Right-->
                 <span class="dropdown dropup pmd-dropdown clearfix ">
-                                                                                                <button class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary " type="button" id="dropdownMenuTopRight" data-toggle="dropdown" aria-expanded="true">
-                                                                                                    <i class="material-icons md-dark pmd-md">account_box</i>
-                                                                                                </button>
-                                                                                                <div id="user" aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-left list-group pmd-z-depth pmd-list pmd-card-list">
-                                                                                                    <div class="list-group-item" @click='logout'>logout</div>
-                                                                                                    <div class="list-group-item" >change password</div>
-                                                                                                </div>
-                                                                                            </span>
+                        <button class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary " type="button" id="dropdownMenuTopRight" data-toggle="dropdown" aria-expanded="true">
+                            <i class="material-icons md-dark pmd-md">account_box</i>
+                        </button>
+                        <div id="user" aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-left list-group pmd-z-depth pmd-list pmd-card-list">
+                            <div class="list-group-item hvr-grow" @click='logout'>Logout</div>
+                            <router-link to="/change_password" class="list-group-item hvr-grow" id ='chan_pass'>Change password</router-link>
+                        </div>
+                    </span>
             </div>
     
             <div id='form-action'>
@@ -23,18 +23,18 @@
             <div id='menu'>
                 <!--Dropdown Menu Top Right-->
                 <span class="dropdown dropup pmd-dropdown clearfix ">
-                                                                                                <button class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary " type="button" id="dropdownMenuTopRight" data-toggle="dropdown" aria-expanded="true">
-                                                                                                    <i class="material-icons md-dark pmd-md">menu</i>
-                                                                                                </button>
-                                                                                                <div aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-right list-group pmd-z-depth pmd-list pmd-card-list">
-                                                                                                    <div class="list-group-item" style='background-color: RGB(54 116 197); font-weight: 600;'>
-                                                                                                        <router-link :to="{path: 'vocabularies'}" style='color: white'>vocabularies</router-link>
-                                                                                                    </div>
-                                                                                                    <div class="list-group-item" style='background-color: #fef175'>
-                                                                                                        <router-link :to="{path: 'notes'}">notes</router-link>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </span>
+                        <button class="btn btn-sm pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-primary " type="button" id="dropdownMenuTopRight" data-toggle="dropdown" aria-expanded="true">
+                            <i class="material-icons md-dark pmd-md">menu</i>
+                        </button>
+                        <div aria-labelledby="dropdownMenu3" role="menu" class="dropdown-menu pmd-dropdown-menu-top-right list-group pmd-z-depth pmd-list pmd-card-list">
+                            <div class="list-group-item" style='background-color: RGB(54 116 197); font-weight: 600;'>
+                                <router-link :to="{path: 'vocabularies'}" style='color: white' class='hvr-grow'>vocabularies</router-link>
+                            </div>
+                            <div class="list-group-item" style='background-color: #fef175'>
+                                <router-link :to="{path: 'notes'}" class='hvr-grow'>notes</router-link>
+                            </div>
+                        </div>
+                    </span>
             </div>
         </div>
     
@@ -56,8 +56,8 @@
                     </div>
                     <div class="pmd-modal-action">
                         <button data-dismiss="modal" class="btn pmd-btn-fab pmd-ripple-effect btn-info" type="button" @click='submit'>
-                            <i class="material-icons md-dark pmd-md">add</i>
-                        </button>
+                                <i class="material-icons md-dark pmd-md">add</i>
+                            </button>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
 <script>
 import FormInput from '../../../components/vocabularies/formInput.vue'
 import { logout } from '../../../helpers/lib.js'
+import 'hover.css'
 
 export default {
     components: { FormInput },
@@ -91,9 +92,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#chan_pass {
+    border: 0;
+    font-size: 15px !important;
+    color: #3d3d3d !important;
+}
+
 #user {
     font-size: 15px;
 }
+
 #footer {
     position: fixed;
     width: 100%;
@@ -198,7 +206,7 @@ export default {
             align-items: center;
             min-width: unset;
             font-size: 34.6px;
-            .material-icons{
+            .material-icons {
                 color: white;
             }
         }

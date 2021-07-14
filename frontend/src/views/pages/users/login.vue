@@ -8,6 +8,7 @@
                 <div role="alert" class="alert alert-danger alert-dismissible" v-if="errors" v-html="errors">
     
                 </div>
+                
                 <!-- Email or username -->
                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                     <label for="inputError1" class="control-label pmd-input-group-label">Username or email</label>
@@ -16,6 +17,7 @@
                         <input type="text" class="form-control" spellcheck="false" v-model="username_or_email">
                     </div>
                 </div>
+
                 <!-- Password -->
                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                     <label for="inputError1" class="control-label pmd-input-group-label">Password</label>
@@ -26,7 +28,7 @@
                 </div>
     
                 <div class='forgot-pass'>
-                    forgot password
+                    <router-link to="/change_password">Forgot password</router-link>
                 </div>
     
                 <!-- btn login -->
