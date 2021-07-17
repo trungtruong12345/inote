@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <the-header title='VOCABULARIES'></the-header>
+        <!-- <the-header title='VOCABULARIES'></the-header> -->
         <div id='content' class='container fade-in the_vocabulry'>
             <div class='row'>
                 <div class='col-lg-4 col-md-4 col-sm-6 col-12' v-for="(item, index) in vocabularies" :key="index">
@@ -8,19 +8,16 @@
                 </div>
             </div>
         </div>
-        <the-footer></the-footer>
     </div>
 </template>
 
 <script>
 import Show from '../../../components/vocabularies/show.vue'
-import TheHeader from '../../layouts/vocabularies/theHeader.vue'
-import TheFooter from '../../layouts/vocabularies/theFooter.vue'
 import { mapState, mapActions } from 'vuex'
 import $ from "jquery";
 
 export default {
-    components: { TheFooter, TheHeader, Show },
+    components: { Show },
 
     computed: {
         ...mapState('vocabularies', ['vocabularies']),

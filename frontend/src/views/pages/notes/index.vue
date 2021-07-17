@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <the-header title='NOTES'></the-header>
+        <!-- <the-header title='NOTES'></the-header> -->
         <div id='content' class='container fade-in the_note'>
             <div class='notes'>
                 <div class='' v-for="(item) in notes" :key="item.id">
@@ -9,21 +9,18 @@
                 </div>
             </div>
         </div>
-        <the-footer></the-footer>
     </div>
 </template>
 
 <script>
 import ShowTodoList from '../../../components/notes/showTodoList.vue'
 import Show from '../../../components/notes/show.vue'
-import TheHeader from '../../layouts/notes/theHeader.vue'
-import TheFooter from '../../layouts/notes/theFooter.vue'
 import $ from "jquery";
 
 import { mapState, mapActions } from 'vuex'
 
 export default {
-    components: { TheFooter, TheHeader, Show, ShowTodoList },
+    components: { Show, ShowTodoList },
 
     computed: {
         ...mapState('notes', ['notes']),
