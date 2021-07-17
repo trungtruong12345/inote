@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import FormInput from "./formInput.vue";
+import FormInput from "./formInputNote.vue";
 import $ from "jquery";
 export default {
     components: { FormInput },

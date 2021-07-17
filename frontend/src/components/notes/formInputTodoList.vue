@@ -50,7 +50,7 @@ export default {
 div#add {
     display: flex;
     justify-content: center;
-    align-items: center; // background-color: #3498db;
+    align-items: center;
     height: 68px;
     input {
         height: 40px;

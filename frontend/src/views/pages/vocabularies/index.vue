@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
 #content {
-    margin-bottom: 69px;
+    // margin-bottom: 69px;
     @media all and (max-width: 554px) {
         .col-lg-4.col-md-4.col-sm-6.col-12 {
             padding-left: 8px !important;

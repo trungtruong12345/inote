@@ -1,7 +1,8 @@
 <template lang="">
     <div>
-        <!-- <the-header title='NOTES'></the-header> -->
-        <div id='content' class='container fade-in the_note'>
+        <Header></Header>
+        <div id='content' class='container-fluid fade-in the_note'>
+            <menu-left></menu-left>
             <div class='notes'>
                 <div class='' v-for="(item) in notes" :key="item.id">
                     <show-todo-list :note='item' v-if="item.title == 'todo_list'"></show-todo-list>
@@ -13,14 +14,17 @@
 </template>
 
 <script>
+import MenuLeft from '../../layouts/menuLeft.vue'
+import Header from '../../layouts/header.vue'
 import ShowTodoList from '../../../components/notes/showTodoList.vue'
 import Show from '../../../components/notes/show.vue'
 import $ from "jquery";
-
 import { mapState, mapActions } from 'vuex'
 
+
+
 export default {
-    components: { Show, ShowTodoList },
+    components: { Show, ShowTodoList, Header, MenuLeft},
 
     computed: {
         ...mapState('notes', ['notes']),
@@ -40,24 +44,35 @@ export default {
 
 <style lang="scss">
 #content {
-    margin-top: 16px;
-    margin-bottom: 69px;
+    display: flex;
+
     .notes {
-        columns: 3;
+        margin-top: 12px;
+        columns: 5;
         &>div {
             display: inline-block;
             width: 100%;
             position: relative;
         }
     }
-    @media all and (max-width: 595px) {
+    @media only screen and (max-width: 595px) and (min-width: 0px) {
         .notes {
-            columns: 1 !important;
+            columns: 1
         }
     }
-    @media all and (max-width: 991px) {
+    @media only screen and (max-width: 991px) and (min-width: 596px) {
         .notes {
             columns: 2
+        }
+    }
+    @media only screen and (max-width: 1190px) and (min-width: 992px) {
+        .notes {
+            columns: 3
+        }
+    }
+    @media only screen and (max-width: 1551px) and (min-width: 1191px) {
+        .notes {
+            columns: 4
         }
     }
 }
