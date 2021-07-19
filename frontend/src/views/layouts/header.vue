@@ -13,7 +13,7 @@
                     <i class="material-icons md-dark">search</i>
                 </div>
                 <!-- add -->
-                <div class='header-btn-add'>
+                <div class='header-btn-add' data-target="#form-dialog" data-toggle="modal">
                     <i class="material-icons md-dark">library_add</i>
                 </div>
                 <!-- User -->
@@ -29,9 +29,7 @@
                     </div>
                 </div>
             </div>
-
             <div class="" id='header-close'></div>
-        
         </div>
     </div>
 </template>
@@ -64,7 +62,7 @@ export default {
 .container-fluid {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 100;
 }
 
 .header-close {

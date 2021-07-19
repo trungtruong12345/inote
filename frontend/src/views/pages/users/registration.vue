@@ -1,61 +1,59 @@
 <template lang="">
-    <div>
-        <div class="container">
-            <div class='form-login pmd-z-depth-1 shadow-demo' id='form_sign_up'>
-                <form @submit="preventDefault()">
-                    <div class='brand'>
-                        SIGN UP
-                    </div>
-                    <div role="alert" class="alert alert-danger alert-dismissible" v-if="errors" v-html="errors">
+    <div class="container">
+        <div class='form-login pmd-z-depth-1 shadow-demo' id='form_sign_up'>
+            <form @submit="preventDefault()">
+                <div class='brand'>
+                    SIGN UP
+                </div>
+                <div role="alert" class="alert alert-danger alert-dismissible" v-if="errors" v-html="errors">
     
+                </div>
+                <!-- Username -->
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label for="inputError1" class="control-label pmd-input-group-label">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i></div>
+                        <input type="text" class="form-control" spellcheck="false" v-model="username">
                     </div>
-                    <!-- Username -->
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label for="inputError1" class="control-label pmd-input-group-label">Username</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i></div>
-                            <input type="text" class="form-control" spellcheck="false" v-model="username">
-                        </div>
+                </div>
+                <!-- email -->
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label for="inputError1" class="control-label pmd-input-group-label">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">email</i></div>
+                        <input type="email" class="form-control" spellcheck="false" v-model="email">
                     </div>
-                    <!-- email -->
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label for="inputError1" class="control-label pmd-input-group-label">Email</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">email</i></div>
-                            <input type="email" class="form-control" spellcheck="false" v-model="email">
-                        </div>
+                </div>
+                <!-- Password -->
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label for="inputError1" class="control-label pmd-input-group-label">Password</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock_outline</i></div>
+                        <input type="password" class="form-control" spellcheck="false" v-model="password">
                     </div>
-                    <!-- Password -->
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label for="inputError1" class="control-label pmd-input-group-label">Password</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">lock_outline</i></div>
-                            <input type="password" class="form-control" spellcheck="false" v-model="password">
-                        </div>
-                    </div>
+                </div>
     
-                    <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                        <label for="inputError1" class="control-label pmd-input-group-label">Confirm password</label>
-                        <div class="input-group">
-                            <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">https</i></div>
-                            <input type="password" class="form-control" spellcheck="false" v-model="password_confirmation">
-                        </div>
+                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                    <label for="inputError1" class="control-label pmd-input-group-label">Confirm password</label>
+                    <div class="input-group">
+                        <div class="input-group-addon"><i class="material-icons md-dark pmd-sm">https</i></div>
+                        <input type="password" class="form-control" spellcheck="false" v-model="password_confirmation">
                     </div>
+                </div>
     
-                    <!-- btn login -->
-                    <div class='btn-login'>
-                        <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary" @click="onSubmit">SIGN UP</button>
-                    </div>
+                <!-- btn login -->
+                <div class='btn-login'>
+                    <button type="button" class="btn pmd-btn-raised pmd-ripple-effect btn-primary" @click="onSubmit">SIGN UP</button>
+                </div>
     
-                    <!-- btn-register -->
-                    <div class='btn-register'>
-                        <router-link to="/sign_in">OR SIGN IN</router-link>
-                    </div>
+                <!-- btn-register -->
+                <div class='btn-register'>
+                    <router-link to="/sign_in">OR SIGN IN</router-link>
+                </div>
     
-                </form>
-            </div>
-            <verify-email></verify-email>
+            </form>
         </div>
+        <verify-email></verify-email>
     </div>
 </template>
 

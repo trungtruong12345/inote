@@ -28,15 +28,17 @@ import 'hover.css'
 
 export default {
     mounted() {
+        $('.list-menu-left[data-v-b1430e34]').css('min-height', `${$(document).height() - ($(document).height() * ($('#base-header').height() / $(document).height()))}px`)
+
         $('#menu').click(function() {
             $('.list-menu-left').toggleClass('set_shadow');
             $('.list-group ').toggleClass('show');
         })
 
         $('.list-group-item').hover(function() {
-            if (!$(this).hasClass('active')) {
+            // if (!$(this).hasClass('active')) {
                 $(this).addClass('on_hover');
-            }
+            // }
 
         }, function() {
             $(this).removeClass('on_hover');
@@ -47,9 +49,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$text_color : RGB(85 85 85);
 .active {
     background-color: #feefc3;
     border-radius: 0px 33px 33px 0px;
+    color: $text_color;
 }
 
 .show {
@@ -81,6 +85,7 @@ img {
 }
 
 .list-group-item {
+    border-radius: 0px 33px 33px 0px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -111,12 +116,14 @@ img {
 
 .on_hover {
     background-color: RGB(241 243 244);
-    border-radius: 0px 33px 33px 0px;
+    // border-radius: 0px 33px 33px 0px;
+    color: $text_color !important;
 }
 
 .list-group-item.active:hover,
 .list-group-item.active:focus {
-    z-index: 2;
+    z-index: 2;;
     background-color: RGB(241 243 244);
+    color: $text_color !important;
 }
 </style>

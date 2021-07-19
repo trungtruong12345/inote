@@ -3,7 +3,7 @@
         <form class="form-horizontal" @submit.prevent=''>
             <div class="form-group pmd-textfield pmd-textfield-floating-label form-group-lg">
                 <label for="first-name">Title</label>
-                <input type="text" class="mat-input form-control" autocomplete="off" :value="title" spellcheck="false">
+                <input type="text" class="form-input form-control" autocomplete="off" :value="title" spellcheck="false">
             </div>
             <div class="form-group pmd-textfield pmd-textfield-floating-label">
                 <div contenteditable class='form-text' autocomplete="off" spellcheck="false" data-placeholder="Content" v-html='content'>

@@ -72,7 +72,7 @@ const module_notes = {
             })
         },
         createNote(context, { title, bgColor, content }) {
-            context.commit('search', { value: '' })
+            context.state.search = ''
             createNote(title, content, bgColor)
                 .then(() => {
                     this.dispatch('notes/getNotes')

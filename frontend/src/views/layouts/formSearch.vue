@@ -1,5 +1,5 @@
 <template lang="">
-    <div>
+    <div id ='form-search'>
         <form @submit.prevent="">
             <div class="form-group">
                 <input type="text" class="form-control" name="" id="" aria-describedby="helpId" :placeholder="placeholder" v-model="value" spellcheck="false" @keyup="onchange">
@@ -30,7 +30,7 @@ export default {
         onchange(e) {
             e.preventDefault();
             if (location.pathname == '/notes') {
-                this.$store.commit('notes/Search', { value: e.target.value })
+                this.$store.commit('notes/search', { value: e.target.value })
                 this.$store.dispatch('notes/getNotes')
             } else if (location.pathname == '/vocabularies') {
                 this.$store.commit('vocabularies/Search', { value: e.target.value })

@@ -10,10 +10,13 @@
                 </div>
             </div>
         </div>
+
+        <form-add></form-add>
     </div>
 </template>
 
 <script>
+import FormAdd from '../../../components/notes/formAdd.vue'
 import MenuLeft from '../../layouts/menuLeft.vue'
 import Header from '../../layouts/header.vue'
 import ShowTodoList from '../../../components/notes/showTodoList.vue'
@@ -24,7 +27,7 @@ import { mapState, mapActions } from 'vuex'
 
 
 export default {
-    components: { Show, ShowTodoList, Header, MenuLeft},
+    components: { Show, ShowTodoList, Header, MenuLeft, FormAdd},
 
     computed: {
         ...mapState('notes', ['notes']),
@@ -42,11 +45,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #content {
     display: flex;
-
     .notes {
+        flex: auto;
         margin-top: 12px;
         columns: 5;
         &>div {
