@@ -33,23 +33,25 @@ export default {
         $('#menu').click(function() {
             $('.list-menu-left').toggleClass('set_shadow');
             $('.list-group ').toggleClass('show');
+            if ($('.list-group').hasClass('show') && $(document).width() <= 680) {
+                $('.show').parent().css('margin-right', '13px')
+            } else if ($(document).width() <= 680) {
+                $('.list-group').parent().css('margin-right', '0px')
+            }
         })
 
         $('.list-group-item').hover(function() {
-            // if (!$(this).hasClass('active')) {
-                $(this).addClass('on_hover');
-            // }
-
+            $(this).addClass('on_hover');
         }, function() {
             $(this).removeClass('on_hover');
         });
-
     },
 }
 </script>
 
 <style lang="scss" scoped>
-$text_color : RGB(85 85 85);
+$text_color: RGB(85 85 85);
+$max_width: 680px;
 .active {
     background-color: #feefc3;
     border-radius: 0px 33px 33px 0px;
@@ -58,6 +60,9 @@ $text_color : RGB(85 85 85);
 
 .show {
     width: 200px !important;
+    @media only screen and (max-width: $max_width) {
+        width: 63px !important;
+    }
 }
 
 .set_shadow {
@@ -74,6 +79,16 @@ img {
 
 .list-menu-left {
     margin-right: 13px;
+    @media only screen and (max-width: $max_width) {
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width: $max_width) {
+    .list-group {
+        width: 0px;
+        overflow: hidden;
+    }
 }
 
 .list-group {
@@ -82,6 +97,10 @@ img {
     z-index: 2;
     top: 58px;
     transition: 0.4s;
+    @media only screen and (max-width: $max_width) {
+        width: 0px;
+        overflow: hidden;
+    }
 }
 
 .list-group-item {
@@ -116,13 +135,12 @@ img {
 
 .on_hover {
     background-color: RGB(241 243 244);
-    // border-radius: 0px 33px 33px 0px;
     color: $text_color !important;
 }
 
 .list-group-item.active:hover,
 .list-group-item.active:focus {
-    z-index: 2;;
+    z-index: 2;
     background-color: RGB(241 243 244);
     color: $text_color !important;
 }
