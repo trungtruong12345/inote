@@ -1,0 +1,111 @@
+.menu-left {
+    position        : fixed;
+    width           : 264px;
+    height          : 100vh;
+    left            : 0px;
+    top             : 0px;
+    font-family     : 'Roboto', sans-serif;
+    z-index         : 6;
+    background-color: #FFFDFD;
+
+    &>.profile {
+        position         : relative;
+        background-image : url('@/assets/images/header/Vectors.png');
+        background-size  : 100%;
+        background-repeat: no-repeat;
+
+        width : 265px;
+        height: 120.01px;
+
+        &>.bg {
+            width        : 50px;
+            height       : 49.59px;
+            margin-left  : 11px;
+            margin-top   : 11.9px;
+            border-radius: 50%;
+        }
+
+        &>.user-name {
+            height     : 18.85px;
+            margin-left: 11px;
+            margin-top : 6px;
+
+            font-style : normal;
+            font-weight: normal;
+            font-size  : 16px;
+            line-height: 19px;
+            display    : flex;
+            align-items: center;
+            text-align : center;
+
+            color: #FFFFFF;
+        }
+
+        &>.user-email {
+            // width      : 193px;
+            height     : 15.87px;
+            margin-left: 11px;
+            margin-top : 6px;
+
+            font-style : normal;
+            font-weight: 300;
+            font-size  : 14px;
+            line-height: 16px;
+            display    : flex;
+            align-items: center;
+            text-align : center;
+
+            color: rgba(253, 253, 253, 0.98);
+        }
+
+        &>.arrow {
+            position: absolute;
+            right   : 9px;
+            top     : 77.32px;
+        }
+
+        &>.logout {
+            position: absolute;
+            width   : 110px;
+            height  : 37px;
+            left    : 193px;
+            top     : 98px;
+
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+            background   : #FFFFFF;
+            border-radius: 10px;
+
+            font-family: 'Roboto', sans-serif;
+            font-style : normal;
+            font-weight: normal;
+            font-size  : 19px;
+            line-height: 37px;
+            text-align : center;
+            color      : #000000;
+        }
+    }
+
+    &>.list {
+        position: relative;
+        color   : #000000;
+
+        a {
+            color: #000000;
+        }
+
+        &>.is_row {
+            display    : flex;
+            align-items: center;
+            padding    : 12.65px 14px;
+
+            &>.text {
+                margin-left: 9px;
+                font-style : normal;
+                font-weight: normal;
+                font-size  : 19px;
+                line-height: 22px;
+            }
+        }
+    }
+}

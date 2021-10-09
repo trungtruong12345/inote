@@ -1,0 +1,106 @@
+.sign-in {
+    .form-auth {
+        width     : 347px;
+        height    : 504px;
+        position  : fixed;
+        left      : 50%;
+        transform : translateX(-50%);
+        margin-top: 53px;
+        z-index   : 5;
+
+        .header {
+            height     : 80px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-style : normal;
+            font-weight: normal;
+            font-size  : 64px;
+            line-height: 80px;
+            text-align : center;
+            color      : #224957;
+        }
+
+        .description {
+            margin-top : 39px;
+            height     : 20px;
+            font-family: 'Lexend Deca', sans-serif;
+            font-style : normal;
+            font-weight: normal;
+            font-size  : 16px;
+            line-height: 20px;
+            text-align : center;
+            color      : #224957;
+        }
+
+        .form {
+            padding   : 0px 24px;
+            margin-top: 36px;
+
+            input[name="password"] {
+                margin-top: 32px;
+            }
+
+            input[name="newPassword"] {
+                margin-top: 32px;
+            }
+
+            input[name="enterThePassword"] {
+                margin-top   : 32px;
+                margin-bottom: 13px;
+            }
+
+            .checkbox {
+                display        : flex;
+                justify-content: space-between;
+                align-content  : center;
+                margin-top     : 23px;
+
+                div:nth-child(1) {
+                    display        : flex;
+                    justify-content: start;
+                    align-items    : center;
+                    font-family    : 'Montserrat', sans-serif;
+                    font-style     : normal;
+                    font-weight    : 500;
+                    font-size      : 14px;
+                    line-height    : 17px;
+                    text-align     : center;
+                    color          : #093545;
+
+                    input {
+                        margin-right: 7px;
+                    }
+                }
+
+                div:nth-child(2) {}
+            }
+
+            .other {
+                display        : flex;
+                justify-content: start;
+                align-items    : center;
+                margin-top     : 18px;
+
+                img {
+                    width : 45px;
+                    height: 45px;
+                }
+
+                img:nth-child(1) {
+                    margin-right: 16px;
+                }
+            }
+        }
+
+        #resend-code {
+            text-align   : right;
+            margin-top   : 13px;
+            font-family  : 'Montserrat', sans-serif;
+            font-style   : normal;
+            font-weight  : 500;
+            font-size    : 14px;
+            line-height  : 17px;
+            color        : #000000;
+            margin-bottom: 33px;
+        }
+    }
+}

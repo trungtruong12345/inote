@@ -51,5 +51,7 @@ gem 'rack-cors'
 # ENV
 gem "figaro"
 
-
 gem "letter_opener", :group => :development
+gem 'activestorage-validator'
+gem 'activestorage'
+gem 'dotenv-rails'

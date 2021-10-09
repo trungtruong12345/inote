@@ -1,11 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :vocabularies
+  has_many :vocabulary_words
 
   has_many :notes
-
-  validates :username, presence: true, uniqueness: true
 
   validates :password, presence: true, length: { minimum: 6, maximum: 15 }
 
@@ -14,6 +12,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validates :email_confirmation_code, uniqueness: true, presence: true, on: :update
+
+  after_create :set_username
 
   EMAIL_ACTIVE = true
   EMAIL_INACTIVE = false
@@ -55,5 +55,10 @@ class User < ApplicationRecord
     end
   rescue StandardError => e
     false
+  end
+
+  def set_username
+    self.username = 'trung truong'
+    self.save(validate: false)
   end
 end

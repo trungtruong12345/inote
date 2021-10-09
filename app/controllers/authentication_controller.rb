@@ -1,15 +1,22 @@
 class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request, except: [:auth]
 
-  def auth; end
+  def auth
+    render json: {
+      user_id: current_user.id,
+      name: current_user.username,
+      email: current_user.email,
+      status: 200
+    }
+  end
 
   def sign_in
-    command = AuthenticateUser.call(params[:username_or_email], params[:password])
+    command = AuthenticateUser.call(params[:email], params[:password])
 
     if command.success?
-      render json: { auth_token: command.result }
+      render json: { auth_token: command.result, status: 200 }
     else
-      render json: { error: command.errors }, status: :unauthorized
+      render json: { error: command.errors, status: 401 }
     end
   end
 
@@ -33,9 +40,9 @@ class AuthenticationController < ApplicationController
 
   def verify_email_confirmation_code
     if User.verify_email_confirmation_code? params[:confirmation_code], params[:user_id]
-      render json: { message: 'Sign Up Success' }, status: :ok
+      render json: { message: 'Sign Up Success', status: 200 }, status: :ok
     else
-      render json: { message: 'Email verification code is not correct' }, status: 422
+      render json: { message: 'Email verification code is not correct', status: 422 }, status: 422
     end
   end
 
@@ -50,7 +57,7 @@ class AuthenticationController < ApplicationController
     user = User.find_by(email: change_pass_params[:email])
     if User.verify_email_confirmation_code?(change_pass_params[:email_confirmation_code], user.id)
       if user.update!(password: change_pass_params[:password],
-                      password_confirmation: change_pass_params[:password_confirmation])
+                      password_confirmation: change_pass_params[:password])
         render json: {status: 200}, status: :ok
       else
         return_error user.errors.full_messages
@@ -69,10 +76,10 @@ class AuthenticationController < ApplicationController
   end
 
   def sign_up_params
-    params.permit(:username, :email, :password, :password_confirmation)
+    params.permit(:email, :password, :password_confirmation)
   end
 
   def change_pass_params
-    params.permit(:email, :email_confirmation_code, :password, :password_confirmation)
+    params.permit(:email, :email_confirmation_code, :password)
   end
 end

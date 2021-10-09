@@ -9,10 +9,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "bootstrap": "^4.6.0",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "axios": "^0.23.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.15.1",
+    "jquery": "^3.6.0",
+    "js-cookie": "^3.0.1",
     "nuxt": "^2.15.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "fibers": "^5.0.0",
+    "sass": "^1.42.1",
+    "sass-loader": "10"
+  }
 }
