@@ -15,7 +15,6 @@ export const actions = {
         var router = 'notes'
         var res = await dispatch('api/get', { router }, { root: true })
         await commit("FETCH_DATA", { data: res.data, status: res.status })
-        return res
     }
 }
 

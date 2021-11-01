@@ -1,103 +1,100 @@
 .vocabularies {
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	margin     : 0 10px;
 
+	.vocabulary {
+		border-radius   : 16px;
+		background-color: #FFFFFF;
+		overflow        : hidden;
+		min-height      : 100%;
 
-    // position: relative;
+		.image {
+			img {
+				width : 100%;
+				height: 95px;
+			}
 
-    .vocabulary {
-        border-radius   : 25px;
-        background-color: #FFFFFF;
-        overflow        : hidden;
+			height: 50%;
+		}
 
-        .image {
-            img {
-                width : 100%;
-                height: 95px;
-            }
+		.word {
+			margin-top: 9px;
 
-            height: 50%;
-        }
+			font-style : normal;
+			font-weight: 500;
+			font-size  : 17px;
+			line-height: 22px;
+			text-align : center;
 
-        .word {
-            margin-top: 9px;
+			color: #000000;
 
-            font-style : normal;
-            font-weight: 500;
-            font-size  : 19px;
-            line-height: 22px;
-            text-align : center;
+		}
 
-            color: #000000;
+		.pronounce {
+			margin-top: 9px;
 
-        }
+			font-style : normal;
+			font-weight: 500;
+			font-size  : 15px;
+			line-height: 15px;
+			text-align : center;
 
-        .pronounce {
-            margin-top: 9px;
+			color: #000000;
+		}
 
-            font-style : normal;
-            font-weight: 500;
-            font-size  : 13px;
-            line-height: 15px;
-            text-align : center;
+		.translate {
+			margin-top   : 9px;
+			margin-bottom: 11px;
 
-            color: #000000;
-        }
+			font-style : normal;
+			font-weight: 500;
+			font-size  : 17px;
+			line-height: 21px;
+			text-align : center;
+			color      : #000000;
+		}
+	}
 
-        .translate {
-            margin-top   : 9px;
-            margin-bottom: 11px;
+	&>div {
+		padding   : 0px 12px;
+		margin-top: 17px;
+		filter    : drop-shadow(0px 4px 4px rgba(27, 27, 27, 0.24));
+	}
 
-            font-style : normal;
-            font-weight: 500;
-            font-size  : 18px;
-            line-height: 21px;
-            text-align : center;
-            color      : #000000;
-        }
-    }
+	@media screen and (min-width: 1200px) {
+		&>div {
+			padding   : 0px 15px;
+			margin-top: 26.8px !important;
+		}
 
-    &>div {
-        padding   : 0px 12px;
-        margin-top: 17px;
-        filter    : drop-shadow(0px 4px 4px rgba(27, 27, 27, 0.24));
-    }
+		.image {
+			img {
+				height: 130px !important;
+			}
+		}
 
-    @media screen and (min-width: 1200px) {
-        &>div {
-            padding   : 0px 15px;
-            margin-top: 26.8px !important;
-        }
+		.word {
+			font-size : 21px !important;
+			margin-top: 11.8px !important;
+		}
 
-        .image {
-            img {
-                height: 130px !important;
-            }
-        }
+		.pronounce {
+			font-size : 16px !important;
+			margin-top: 11.8px !important;
+		}
 
-        .word {
-            font-size : 21px !important;
-            margin-top: 11.8px !important;
-        }
+		.translate {
+			margin-top   : 11.8px !important;
+			font-size    : 20px !important;
+			margin-bottom: 14px !important;
+		}
+	}
 
-        .pronounce {
-            font-size : 16px !important;
-            margin-top: 11.8px !important;
-        }
-
-        .translate {
-            margin-top   : 11.8px !important;
-            font-size    : 20px !important;
-            margin-bottom: 14px !important;
-        }
-    }
-
-    margin: 0 1px;
-    
-    .vocabulary-model{
-        top: 44px;
-        z-index: 6;
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+	.vocabulary-model {
+		top      : 44px;
+		z-index  : 6;
+		position : fixed;
+		left     : 50%;
+		transform: translateX(-50%);
+	}
 }

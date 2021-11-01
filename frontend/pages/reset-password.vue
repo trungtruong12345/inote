@@ -4,8 +4,8 @@
             <div class='header'>Reset password</div>
             <div class='description'>Change the password</div>
             <div class='form'>
-                <InputAuth name='confirmationCode' type='text' placeholder='Confirmation code' />
-                <InputAuth name='newPassword' type='password' placeholder='Reset Password' />
+                <formAuth name='confirmationCode' type='text' placeholder='Confirmation code' />
+                <formAuth name='newPassword' type='password' placeholder='Reset Password' />
                 <div id='resend-code' @click='resendEmailConfirmationCode'>Resend confirmation code</div>
                 <BtnToAuth value='Sign up' other='Or sign in ?' :func='changePassword' @res-status='resStatus' />
             </div>

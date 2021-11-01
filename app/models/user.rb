@@ -7,6 +7,10 @@ class User < ApplicationRecord
 
   has_many :notes
 
+  has_many :todo_lists
+
+  has_many :todos, through: :todo_lists
+
   validates :password, presence: true, length: { minimum: 6, maximum: 15 }
 
   validates :password_confirmation, presence: true

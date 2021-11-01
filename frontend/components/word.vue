@@ -11,29 +11,33 @@
 
 <script>
 import { mapActions } from "vuex";
+import $ from "jquery";
 
 export default {
-    props: ['id', 'image', 'word', 'pronounce', 'translate', 'example'],
-    methods: {
-        ...mapActions("headerDefault", ["toggleFormInput"]),
-        ...mapActions("vocabularyWord", ['onUpdateData']),
-        async onClick() {
-            await this.onUpdateData({
-                id: this.id,
-                image: this.image,
-                word: this.word,
-                translate: this.translate,
-                pronounce: this.pronounce,
-                example: this.example
-            })
-            await this.toggleFormInput()
-        }
+  props: ["id", "image", "word", "pronounce", "translate", "example"],
+  methods: {
+    ...mapActions("headerDefault", ["toggleFormInput"]),
+    ...mapActions("vocabularyWord", ["onUpdateData"]),
+    async onClick() {
+      await this.onUpdateData({
+        id: this.id,
+        image: this.image,
+        word: this.word,
+        translate: this.translate,
+        pronounce: this.pronounce,
+        example: this.example,
+      });
+      await this.toggleFormInput();
     },
+  },
+  mounted() {
+    $(".vocabulary").addClass("scale-in-ver-top");
+  },
 };
 </script>
 
 <style lang="css" scoped>
 img {
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>

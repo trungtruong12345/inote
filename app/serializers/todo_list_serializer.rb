@@ -1,3 +1,5 @@
 class TodoListSerializer < ActiveModel::Serializer
-  attributes :id, :start_date, :end_date
+  attributes :id, :est
+
+  has_many :todos
 end

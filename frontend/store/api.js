@@ -7,18 +7,18 @@ export const state = () => ({
 })
 
 export const mutations = {
-    UPDATE_HEADERS(state, token){
+    UPDATE_HEADERS(state, token) {
         state.headers['Authorization'] = token || null
     }
 }
 
 export const actions = {
-    async refreshToken({commit, dispatch, rootState }) {
+    async refreshToken({ commit, dispatch, rootState }) {
         await dispatch('auth/setToken', {}, { root: true })
         commit('UPDATE_HEADERS', rootState.auth.token)
     },
-    
-    async post({ dispatch, state}, { router, data }) {
+
+    async post({ dispatch, state }, { router, data }) {
         await dispatch('refreshToken')
         return await axios.post(`${process.env.URL_BACKEND}${router}`, data, state)
     },

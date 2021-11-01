@@ -10,7 +10,7 @@
 
 export default {
     mounted(){
-        document.querySelector('body').style.backgroundColor = '#F0F2F5'
+        document.querySelector('body').style.backgroundColor = '#FFFFFF'
     }
 };
 </script>
@@ -18,9 +18,11 @@ export default {
 <style lang="css">
 #header {
     width: 100vw;
-    height: 53px;
+    height: 46px;
     left: 0;
     top: 0;
-    background-color: #224957;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.09);
+    z-index: 1;
 }
 </style>

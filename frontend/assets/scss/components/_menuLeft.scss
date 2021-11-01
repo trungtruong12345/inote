@@ -7,15 +7,16 @@
     font-family     : 'Roboto', sans-serif;
     z-index         : 6;
     background-color: #FFFDFD;
+    border-radius   : 0px 5.54px 5.54px 0px;
 
     &>.profile {
-        position         : relative;
-        background-image : url('@/assets/images/header/Vectors.png');
-        background-size  : 100%;
-        background-repeat: no-repeat;
-
-        width : 265px;
-        height: 120.01px;
+        position               : relative;
+        // background-image : url('@/assets/images/header/Vectors.png');
+        // background-image    : url('https://cdn.dribbble.com/users/441305/screenshots/5477297/media/98abcac0123ea00720a6ed209f48253a.png');
+        background-size        : 100%;
+        background-repeat      : no-repeat;
+        height                 : 117.01px;
+        border-radius          : 0px 5.54px 0px 0px;
 
         &>.bg {
             width        : 50px;
@@ -37,8 +38,11 @@
             display    : flex;
             align-items: center;
             text-align : center;
-
-            color: #FFFFFF;
+            color      : #34353C;
+            font-family: 'Space Grotesk';
+            font-style : normal;
+            font-weight: bold;
+            font-size  : 19.9444px;
         }
 
         &>.user-email {
@@ -47,15 +51,15 @@
             margin-left: 11px;
             margin-top : 6px;
 
+            font-family: 'Space Grotesk';
             font-style : normal;
-            font-weight: 300;
+            font-weight: initial;
             font-size  : 14px;
             line-height: 16px;
             display    : flex;
             align-items: center;
             text-align : center;
-
-            color: rgba(253, 253, 253, 0.98);
+            color      : #34353C;
         }
 
         &>.arrow {
@@ -83,15 +87,18 @@
             line-height: 37px;
             text-align : center;
             color      : #000000;
+
+            z-index: 1;
         }
     }
 
     &>.list {
-        position: relative;
-        color   : #000000;
+        position   : relative;
+        // color   : #000000;
 
         a {
-            color: #000000;
+            // color: #000000;
+            color: #474F59;
         }
 
         &>.is_row {
@@ -99,12 +106,26 @@
             align-items: center;
             padding    : 12.65px 14px;
 
+            .icon {
+                width: 26px;
+
+                i {
+                    font-size: 24.5px;
+                    color    : #8D91A0;
+                }
+            }
+
             &>.text {
-                margin-left: 9px;
-                font-style : normal;
-                font-weight: normal;
-                font-size  : 19px;
-                line-height: 22px;
+                margin-left: 15px;
+
+                a {
+                    line-height: 22px;
+                    font-family: 'Space Grotesk';
+                    font-style : normal;
+                    font-weight: normal;
+                    font-size  : 19.9444px;
+                    color      : #8D91A0;
+                }
             }
         }
     }

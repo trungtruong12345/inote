@@ -47,7 +47,7 @@ export default {
     } else {
       $(`.notes-note #content-id-${this.id}`).height("61px");
     }
-  },
+  }
 };
 </script>
 

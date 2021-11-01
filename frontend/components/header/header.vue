@@ -3,7 +3,7 @@
         <!-- Desktop -->
         <div class='desktop-header'>
             <div class="dropdown">
-                <img src='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' />    
+                <img src='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' />
                 <div class="dropdown-content">
                     <a @click='onSignOut'>Logout</a>
                 </div>
@@ -11,14 +11,14 @@
             <div class='desktop-header-username'>
                 {{ name }}
             </div>
-            <div class='desktop-header-note'>
-                <nuxt-link to="/notes">Notes</nuxt-link>
-            </div>
             <div class='desktop-header-word'>
                 <nuxt-link to="/words">Words</nuxt-link>
             </div>
+            <div class='desktop-header-note'>
+                <nuxt-link to="/notes">Notes</nuxt-link>
+            </div>
             <div class='desktop-header-todo'>
-                <nuxt-link to="Todo">Todo</nuxt-link>
+                <nuxt-link to="todo">Todo</nuxt-link>
             </div>
         </div>
         <!-- Desktop -->
@@ -26,9 +26,10 @@
         <!-- Mobile -->
         <div class='menu-left-icon'>
             <img src='@/assets/images/header/menu.png' @click="toggleMenuLeft" />
+            <!-- <i class="bi bi-list"></i> -->
         </div>
     
-        <div :class="showMenuLeft ? '' : 'd-none'">
+        <div :class="showMenuLeft ? '' : 'd-none'" id="related_menu_left">
             <MenuLeft />
         </div>
         <!-- Mobile -->
@@ -43,14 +44,15 @@
             <FormSearch />
         </div>
     
-        <div class='add' @click='isShowFormInput'>
+        <div class='add hvr-grow' @click='isShowFormInput'>
             <img src='@/assets/images/header/Group.png' />
         </div>
     
         <!-- start model -->
         <div :class="'model ' + (showFormInput ? '' : 'd-none')">
-            <InputVocabulary v-if="this.$route.path == '/words'" :key='keyModel' />
-            <InputNote v-if="this.$route.path == '/notes'" :key='keyModel' />
+            <formVocabulary v-if="this.$route.path == '/words'" :key='keyModel' />
+            <formNote v-if="this.$route.path == '/notes'" :key='keyModel' />
+            <formTodo v-if="this.$route.path == '/todo'" :key='keyModel' />
         </div>
         <!-- end model -->
     
@@ -62,113 +64,118 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  data() {
-    return {
-      keyModel: 11,
-    };
-  },
-  computed: {
-    ...mapGetters("headerDefault", [
-      "modelFade",
-      "showMenuLeft",
-      "showFormInput",
-      "showFormSearch",
-    ]),
-    ...mapGetters("auth", ["name"]),
-  },
-  methods: {
-    ...mapActions("headerDefault", [
-      "toggleModelFade",
-      "toggleMenuLeft",
-      "toggleFormInput",
-      "toggleFormSearch",
-    ]),
-    ...mapActions("auth", ["signOut"]),
-    onSignOut() {
-      this.signOut();
-      this.$router.push("/sign-in");
+    data() {
+        return {
+            keyModel: 11,
+        };
     },
-    async resetData() {
-      await this.$store.dispatch("vocabularyWord/resetData");
-      await this.$store.dispatch("note/resetData");
+    computed: {
+        ...mapGetters("headerDefault", [
+            "modelFade",
+            "showMenuLeft",
+            "showFormInput",
+            "showFormSearch",
+        ]),
+        ...mapGetters("auth", ["name"]),
     },
+    methods: {
+        ...mapActions("headerDefault", [
+            "toggleModelFade",
+            "toggleMenuLeft",
+            "toggleFormInput",
+            "toggleFormSearch",
+        ]),
+        ...mapActions("auth", ["signOut"]),
+        onSignOut() {
+            this.signOut();
+            this.$router.push("/sign-in");
+        },
+        async resetData() {
+            await this.$store.dispatch("vocabularyWord/resetData");
+            await this.$store.dispatch("note/resetData");
+            await this.$store.dispatch("formTodoList/setDefault");
+        },
 
-    async isShowFormInput() {
-      this.keyModel = Math.floor(Math.random() * 10);
-      await this.resetData();
-      await this.toggleFormInput();
+        async isShowFormInput() {
+            this.keyModel += 1
+            await this.resetData();
+            await this.toggleFormInput();
+        },
     },
-  },
-  created() {
-    this.resetData();
-  },
+    created() {
+        this.resetData();
+    },
 };
 </script>
 
 <style lang="css" scoped>
 .model {
-  top: 61px;
-  z-index: 6;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+    top: 61px;
+    z-index: 6;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .add,
 img {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .desktop-header a.nuxt-link-active {
-  color: #95a5a6;
+    color: #805959;
 }
 
 .desktop-header a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .dropbtn {
-  background-color: #4caf50;
-  color: white;
-  padding: 5px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
 }
 
 .dropdown {
-  position: relative;
-  display: inline-block;
-  padding: 0 !important;
+    position: relative;
+    display: inline-block;
+    padding: 0 !important;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  margin: 0 !important;
-  padding: 0 !important;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .dropdown-content a {
-  color: black !important;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+    color: black !important;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+    background-color: #f1f1f1;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #3e8e41;
+    background-color: #3e8e41;
+}
+
+.menu-left-icon img {
+    width: 18px;
 }
 </style>

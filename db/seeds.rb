@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+todos = []
+(1..4).each do |i|
+  title = (0...14).map { ('a'..'z').to_a[rand(26)] }.join
+  
+  content = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
+
+  todos << {title: title, content: rand(0..1) == 1 ? '' : content, est: 3, status: rand(0..1)} 
+end
+
+(1..4).each do |item|
+  todoList = User.find(2).todo_lists.create(est: rand(1..5))
+
+  todos.each do |todo|
+    todoList.todos.create(todo)
+  end
+end

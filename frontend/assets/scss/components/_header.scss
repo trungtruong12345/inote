@@ -1,6 +1,6 @@
 .header-default {
-    background-color: #224957;
-    color           : #FFFFFF;
+    color: #212529;
+    background-color: white;
 
     font-family: 'Roboto', sans-serif;
     font-style : normal;
@@ -12,7 +12,7 @@
     align-items    : center;
     justify-content: space-between;
     padding        : 0 12px;
-    height         : 53px;
+    height         : 46px;
 
     // position: relative;
 
@@ -44,7 +44,9 @@
                 border-radius   : 15px;
                 padding         : 0 10px;
                 border          : 0px;
-                background-color: #FAFAFA;
+                // background-color: #FAFAFA;
+                // background: #FAFAFA;
+                box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
             }
 
             &>.turn-off {
@@ -69,8 +71,8 @@
         align-items: center;
 
         img {
-            width        : 40px;
-            height       : 40px;
+            width        : 37px;
+            height       : 37px;
             border-radius: 50%;
         }
 
@@ -83,14 +85,16 @@
             font-weight: 500;
             font-size  : 19px;
             line-height: 22px;
+
             a {
-                color: #FFFFFF;
+                // color          : #FFFFFF;
+                color             : #212529;
                 text-decoration: none;
             }
         }
 
         .desktop-header-username {
-            font-size: 18px !important;
+            font-size  : 18px !important;
             white-space: nowrap;
         }
     }

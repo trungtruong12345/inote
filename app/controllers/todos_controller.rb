@@ -2,10 +2,11 @@
 
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[show update destroy]
+  before_action :set_todo_list, only: [:create]
 
   # GET /todos
   def index
-    @todos = Todo.all
+    @todos = current_user.todos
 
     render json: @todos
   end
@@ -17,7 +18,7 @@ class TodosController < ApplicationController
 
   # POST /todos
   def create
-    @todo = Todo.new(todo_params)
+    @todo = @todo_list.todos.create(todo_params) 
 
     if @todo.save
       render json: @todo, status: :created, location: @todo
@@ -44,11 +45,15 @@ class TodosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_todo
-    @todo = Todo.find(params[:id])
+    @todo = current_user.todos.find_by(id: params[:id])
   end
 
+  def set_todo_list
+    @todo_list = current_user.todo_lists.find_by(id: params[:todo_list_id])  
+  end
+  
   # Only allow a list of trusted parameters through.
   def todo_params
-    params.require(:todo).permit(:title, :status, :todo_list_id)
+    params.require(:todo).permit(:title, :status, :content, :est, :todo_list_id)
   end
 end

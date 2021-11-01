@@ -2,7 +2,7 @@
   <div class="vocabularies row">
     <div
       v-for="vocabulary in data"
-      class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6"
+      class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6 hvr-grow"
       :key="vocabulary.id"
     >
       <Word
