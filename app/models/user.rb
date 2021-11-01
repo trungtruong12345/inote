@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -59,6 +61,6 @@ class User < ApplicationRecord
 
   def set_username
     self.username = 'trung truong'
-    self.save(validate: false)
+    save(validate: false)
   end
 end

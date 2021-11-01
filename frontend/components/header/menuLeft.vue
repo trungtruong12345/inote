@@ -21,8 +21,9 @@
     
         <div class='list'>
             <div class='is_row'>
-                <div class='icon'>
-                    <img src='@/assets/images/menuLeft/Group(2).png' />
+                <div class='icon'> 
+                    <img src='@/assets/images/menuLeft/Group(2).png' v-if="this.$route.path == '/words'" />
+                    <img src='@/assets/images/menuLeft/Group(4).png'v-if="this.$route.path != '/words'"/>
                 </div>
                 <div class='text'>
                     <nuxt-link to="/words">Words</nuxt-link>
@@ -31,28 +32,21 @@
     
             <div class='is_row'>
                 <div class='icon'>
-                    <img src='@/assets/images/menuLeft/Group(2).png' />
+                    <img src='@/assets/images/menuLeft/icon_todo_2.png' v-if="this.$route.path == '/todo'" />
+                    <img src='@/assets/images/menuLeft/icon_todo.png'v-if="this.$route.path != '/todo'"/>
+                </div>
+                <div class='text'>
+                    <nuxt-link to="/todo">Todo</nuxt-link>
+                </div>
+            </div>
+            
+            <div class='is_row'>
+                <div class='icon'>
+                    <img src='@/assets/images/menuLeft/icon_notes_2.png' v-if="this.$route.path == '/notes'" />
+                    <img src='@/assets/images/menuLeft/icon_notes.png'v-if="this.$route.path != '/notes'"/>
                 </div>
                 <div class='text'>
                     <nuxt-link to="/notes">Notes</nuxt-link>
-                </div>
-            </div>
-    
-            <div class='is_row'>
-                <div class='icon'>
-                    <img src='@/assets/images/menuLeft/Group(2).png' />
-                </div>
-                <div class='text'>
-                    <nuxt-link to="/wordsd">Words</nuxt-link>
-                </div>
-            </div>
-    
-            <div class='is_row'>
-                <div class='icon'>
-                    <img src='@/assets/images/menuLeft/Group(2).png' />
-                </div>
-                <div class='text'>
-                    <nuxt-link to="/wordsd">Words</nuxt-link>
                 </div>
             </div>
         </div>
@@ -63,32 +57,33 @@
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-    computed: {
-        ...mapGetters("headerDefault", ["showBtnLogout"]),
-        ...mapGetters("auth", ["user_id", "email", "name"]),
+  computed: {
+    ...mapGetters("headerDefault", ["showBtnLogout"]),
+    ...mapGetters("auth", ["user_id", "email", "name"]),
+  },
+  methods: {
+    ...mapActions("headerDefault", ["toggleBtnLogout"]),
+    ...mapActions("auth", ["auth", "signOut"]),
+    onSignOut() {
+      this.signOut();
+      this.$router.push("/sign-in");
     },
-    methods: {
-        ...mapActions("headerDefault", ["toggleBtnLogout"]),
-        ...mapActions("auth", ["auth", "signOut"]),
-        onSignOut(){
-           this.signOut()
-           this.$router.push("/sign-in");
-        }
-    },
-    async created(){
-        await this.auth()
-    }
+  },
+  async created() {
+    await this.auth();
+  },
 };
 </script>
 
 <style lang="css" scoped>
 a.nuxt-link-active {
-  color: #2C627F;
+  color: #2c627f;
 }
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
-.logout, img {
-    cursor: pointer;
+.logout,
+img {
+  cursor: pointer;
 }
 </style>

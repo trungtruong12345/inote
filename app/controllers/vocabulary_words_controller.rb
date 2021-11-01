@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class VocabularyWordsController < ApplicationController
-  before_action :set_vocabulary_word, only: [:show, :update, :destroy]
+  before_action :set_vocabulary_word, only: %i[show update destroy]
 
   # GET /vocabulary_words
   def index
@@ -20,7 +22,7 @@ class VocabularyWordsController < ApplicationController
     if @vocabulary_word.save
       render json: @vocabulary_word, status: :created, location: @vocabulary_word
     else
-      render json: { message: "Word or translate can not be blank!", status: 422 }
+      render json: { message: 'Word or translate can not be blank!', status: 422 }
     end
   end
 
@@ -29,7 +31,7 @@ class VocabularyWordsController < ApplicationController
     if @vocabulary_word.update(vocabulary_word_params)
       render json: @vocabulary_word
     else
-      render json: { message: "Word or translate can not be blank!", status: 422 }
+      render json: { message: 'Word or translate can not be blank!', status: 422 }
     end
   end
 
@@ -39,13 +41,14 @@ class VocabularyWordsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vocabulary_word
-      @vocabulary_word = current_user.vocabulary_words.find_by(id: params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def vocabulary_word_params
-      params.require(:vocabulary_word).permit(:word, :pronounce, :translate, :example, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vocabulary_word
+    @vocabulary_word = current_user.vocabulary_words.find_by(id: params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def vocabulary_word_params
+    params.require(:vocabulary_word).permit(:word, :pronounce, :translate, :example, :image)
+  end
 end

@@ -16,14 +16,17 @@
 
     // position: relative;
 
-    &>.menu-left-icon {}
+    &>.menu-left-icon {
+        display: none;
+    }
 
     &>.default {
-        width          : 100%;
-        display        : flex;
-        align-items    : center;
-        justify-content: space-between;
-        padding        : 0 20px;
+        width             : 100%;
+        display           : flex;
+        align-items       : center;
+        // justify-content: space-between;
+        justify-content   : end;
+        padding           : 0 20px;
     }
 
     &>.form-search {
@@ -60,6 +63,55 @@
     }
 
     &>.add {}
+
+    .desktop-header {
+        display    : flex;
+        align-items: center;
+
+        img {
+            width        : 40px;
+            height       : 40px;
+            border-radius: 50%;
+        }
+
+        div {
+            padding: 0px 19px;
+            cursor : pointer;
+
+            font-family: 'Roboto', sans-serif;
+            font-style : normal;
+            font-weight: 500;
+            font-size  : 19px;
+            line-height: 22px;
+            a {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+
+        .desktop-header-username {
+            font-size: 18px !important;
+            white-space: nowrap;
+        }
+    }
+
+    .showMenuLeft {
+        display: none;
+    }
+
+    @media screen and (max-width: 993px) {
+        .desktop-header {
+            display: none !important;
+        }
+
+        .menu-left-icon {
+            display: block;
+        }
+
+        .showMenuLeft {
+            display: block;
+        }
+    }
 }
 
 .container {
@@ -75,9 +127,36 @@
     height    : 100vh;
     z-index   : 5;
 }
+
 [contenteditable] {
     outline: 0px solid transparent;
 }
+
 input {
     outline: none;
+}
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background   : #f1f1f100;
+    border-radius: 20px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background   : rgba(136, 136, 136, 0.877);
+    border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    ;
 }

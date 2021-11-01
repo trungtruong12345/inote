@@ -33,8 +33,17 @@ export function DataURIToBlob(dataURI) {
 
 
 export function isBase64(str) {
-    if (str.search("data:image/") == 0 && str.search("base64") >= 0){
+    if (str.search("data:image/") == 0 && str.search("base64") >= 0) {
         return true
     }
     return false
+}
+
+export function beforePaste(id) {
+    $(id).bind("paste", function (e) {
+        setTimeout(function () {
+            var text = $(id).text();
+            $(id).html(text);
+        }, 100);
+    })
 }

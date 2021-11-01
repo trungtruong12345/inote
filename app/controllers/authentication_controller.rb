@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request, except: [:auth]
 
@@ -58,7 +60,7 @@ class AuthenticationController < ApplicationController
     if User.verify_email_confirmation_code?(change_pass_params[:email_confirmation_code], user.id)
       if user.update!(password: change_pass_params[:password],
                       password_confirmation: change_pass_params[:password])
-        render json: {status: 200}, status: :ok
+        render json: { status: 200 }, status: :ok
       else
         return_error user.errors.full_messages
       end
@@ -66,7 +68,7 @@ class AuthenticationController < ApplicationController
       return_error ['Email verification code is not correct']
     end
   rescue StandardError => e
-    return_error ["Errors"]
+    return_error ['Errors']
   end
 
   private

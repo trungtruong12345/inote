@@ -1,5 +1,5 @@
 .input-note {
-    background   : #FFE8A5;
+    // background   : #FFE8A5;
     box-shadow   : -5px 5px 20px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     width        : 374px;
@@ -56,13 +56,13 @@
             border-radius: 50%;
         }
 
+        .btn-add {
+            background  : #00ff40;
+        }
+
         .btn-destroy {
             background  : #DF6558;
             margin-right: 16.5px;
-        }
-
-        .btn-exit {
-            background: #C4C4C4;
         }
     }
 

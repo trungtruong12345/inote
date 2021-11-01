@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :todos
+  resources :todo_lists
   scope :api do
     resources :notes
     resources :vocabulary_words
