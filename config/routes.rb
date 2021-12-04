@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
     resources :vocabulary_words
 
-    # resources :todos, except: %i[create]
-
     resources :todo_lists do
-      resources :todos
+      member do
+        put :order
+      end
     end
 
     post 'sign_in', to: 'authentication#sign_in'

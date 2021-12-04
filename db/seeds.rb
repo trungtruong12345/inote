@@ -1,16 +1,12 @@
-todos = []
-(1..4).each do |i|
-  title = (0...14).map { ('a'..'z').to_a[rand(26)] }.join
-  
-  content = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
-
-  todos << {title: title, content: rand(0..1) == 1 ? '' : content, est: 3, status: rand(0..1)} 
-end
-
-(1..4).each do |item|
-  todoList = User.find(2).todo_lists.create(est: rand(1..5))
-
-  todos.each do |todo|
-    todoList.todos.create(todo)
-  end
+# Create todoList
+(1..20).each do |i|
+  params = {
+    title: (0...15).map { (65 + rand(26)).chr }.join,
+    est: ["4h", "3h", "12p"].sample,
+    order: i,
+    status: [0,1,2,3].sample,
+    user_id: 2,
+    color: ["#FFFFFF", "#FFC1C1", "#E4C1FF", "#FFE6C1", "#C1FFCF", "#C1F4FF"].sample,
+  }
+  TodoList.create(params)
 end

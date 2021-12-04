@@ -18,16 +18,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '@/assets/scss/entry.scss'
+    '@/assets/scss/entry.scss',
+    'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css'
   ],
-  
-  //
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-  //   {
-  //     src: '@/plugins/auth',
-  //     mode: 'client',  
-  //   }
+    { src: "@/plugins/date-picker.js", mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,5 +49,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  server: {
+    // port: 8002,
+    host: process.env.HOST,
   }
 }
