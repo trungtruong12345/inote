@@ -29,7 +29,7 @@ class TodoList < ApplicationRecord
   private
 
   def setOrder 
-    self.order = TodoList.where(user_id: user_id, status: status).order(order: :asc).last.try(:order).to_f + 1.0
+    self.order = TodoList.where(user_id: user_id, status: status).order(order: :desc).first.try(:order).to_f + 1.0
     self.save(validate: false)
   end
 end

@@ -37,6 +37,12 @@ export const actions = {
 		const router = `todo_lists/${id}`
 		const res = await dispatch("api/get", {router: router}, {root: true})
 		return res.data
+	},
+
+	async getmore({dispatch}, {status, lastId}){
+		const router = `get_more_todo?status=${status}&last_id=${lastId}`
+		const res = await dispatch("api/get", {router: router}, {root: true})
+		return res.data
 	}
 }
 

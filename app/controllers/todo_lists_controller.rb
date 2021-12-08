@@ -3,11 +3,13 @@
 class TodoListsController < ApplicationController
   before_action :set_todo_list, only: %i[order show update]
 
+  LIMIT = 20
+
   def index
     @todo_lists = TodoList.statuses.map do |key, val|
       {
         title: key,
-        tasks: current_user.todo_lists.where(status: val).order(order: :desc).map do |todo|
+        tasks: current_user.todo_lists.where(status: val).order(order: :desc).limit(LIMIT).map do |todo|
                  TodoListSerializer.new(todo)
                end
       }
@@ -47,6 +49,23 @@ class TodoListsController < ApplicationController
     else
       render json: { data: @todo_list.errors, status: 422 }, status: :ok
     end
+  end
+
+  # params: status, last_id
+  def get_more
+    last_order = current_user.todo_lists.find_by_id(params[:last_id]).order.to_f
+    
+    todos = current_user.todo_lists.where(status: params[:status])
+                                   .where.not(id: params[:last_id])
+                                   .where('todo_lists.order <= ?', last_order)
+                                   .order(order: :desc)
+                                   .limit(LIMIT)
+    render json: { 
+      data: todos.map do |todo|
+        TodoListSerializer.new(todo)
+      end,
+      status: 200 
+    }
   end
 
   # def destroy

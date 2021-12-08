@@ -5,8 +5,13 @@ Rails.application.routes.draw do
     resources :notes
 
     resources :vocabulary_words
+    
+    get "get_more_todo" => "todo_lists#get_more"
 
     resources :todo_lists do
+      # collection do
+      #   get "get_more/:status/:last_id", to: "todo_lists#get_more"
+      # end
       member do
         put :order
       end

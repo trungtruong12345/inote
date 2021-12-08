@@ -6,6 +6,9 @@ class TodoListSerializer < ActiveModel::Serializer
   end
 
   def time
-    TodoList.seconds_to_hms(object.est - Time.now) if object.est.present?
+    if object.est.present?
+      return TodoList.seconds_to_hms(object.est - Time.now) if object.est >= Time.now
+      :Timeout 
+    end
   end
 end
