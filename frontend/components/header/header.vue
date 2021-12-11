@@ -1,29 +1,31 @@
 <template lang="">
 	<div id="header" class="sticky-top">
 		<div class="container-lg">
-	
+
+			<!-- web app -->
 			<div class="menu-left">
 				<div id="icon" @click="showSidebar = !showSidebar">
 					<i class="bi bi-list"></i>
 				</div>
 				<div id="menu-left" :class="showSidebar ? 'slide-in-left' : 'slide-out-left'">
 					<div id="menu">
-						<nuxt-link to="" class="link">
+						<nuxt-link to="/" class="link">
 							<span><i class="bi bi-house-door-fill"></i></span>Home
 						</nuxt-link>
-						<nuxt-link to="" class="link">
+						<nuxt-link to="/todoList" class="link">
 							<span><i class="bi bi-stickies-fill"></i></span>Todo-list
 						</nuxt-link>
-						<nuxt-link to="" class="link">
+						<nuxt-link to="/notes" class="link">
 							<span><i class="bi bi-journal-bookmark-fill"></i></span>Note
 						</nuxt-link>
-						<nuxt-link to="" class="link">
+						<nuxt-link to="/words" class="link">
 							<span><i class="bi bi-file-word-fill"></i></span>Words
 						</nuxt-link>
 					</div>
 				</div>
 			</div>
-	
+			<!-- web app -->
+
 			<div class="user">
 				<div class="user-icon">
 					<img src='@/assets/images/user.png' />
@@ -33,9 +35,9 @@
 			</div>
 	
 			<div class="menu">
-				<nuxt-link to="">Wordes</nuxt-link>
-				<nuxt-link to="">Notes</nuxt-link>
-				<nuxt-link to="">Todo-list</nuxt-link>
+				<nuxt-link to="/words">Wordes</nuxt-link>
+				<nuxt-link to="/notes">Notes</nuxt-link>
+				<nuxt-link to="/todoList">Todo-list</nuxt-link>
 			</div>
 	
 			<div class="functions">
